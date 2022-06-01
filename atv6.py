@@ -2,10 +2,11 @@
 from tkinter import *
 
 #def para clicar com enter, achar o imc, e aparcer na tela o imc da pessoa
-def cal(event):
+def cal():
     if pes2.get().replace('.', '', 1).isdigit() and alt2.get().replace('.', '', 1).isdigit():
         imc2 = float(pes2.get()) / (float(alt2.get()) * float(alt2.get()))
         res['text'] = f'{imc2:.2f}'
+    
 
         if imc2 < 18.5:
             sa['text'] = ('Abaixo do peso')
@@ -39,6 +40,8 @@ janela.bind('<Return>', cal)
 
 #definindo tamanho da tela
 janela.geometry('1980x820')
+
+janela.bind('<Return>', lambda event: cal())
 
 
 
