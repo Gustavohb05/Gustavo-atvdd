@@ -1,7 +1,12 @@
-from estoquetrabalho import *
+from Classe_Menu import *
 
 
-estoque1 = Estoque()
+#estoque1 = Estoque()
 
-estoque1.exibir_menu()
+menu1 = Menu()
+menu1.exibir_menu()
+
+#compra1 = Compra()
+
+#compra1.sus = Estoque()
 
