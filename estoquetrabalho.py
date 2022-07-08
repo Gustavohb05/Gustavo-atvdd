@@ -1,6 +1,9 @@
 from Produtotrabalho import *
 from Classe_Fabricante import *
 
+
+
+
 class Estoque:
     def __init__(self):
         self.puxar = []
@@ -8,7 +11,7 @@ class Estoque:
         self.entrada = Fabricante()
 
 
-    def salvar_produtos(self):
+    def Salvar_produtos(self):
         entrada_cod = int(input('Informe o codigo:\n'))
         entrada_desc = input('Informe a descricao:\n')
         entrada_quant = int(input('Informe a quantidade:\n'))

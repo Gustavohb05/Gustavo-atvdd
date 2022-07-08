@@ -1,7 +1,10 @@
 from Classe_Venda import *
-from Classe_Fabricante import *
+from bancodedados import *
+
+
 class Menu:
     def __init__(self):
+        self.data = Data()
         self.ai = Estoque()
         compra = Compra()
         compra.sus = self.ai
@@ -13,7 +16,7 @@ class Menu:
             entrada = input('1-Cadastrar\n2-Listar\n3-Trocar Produto\n4-Comprar\n5-Vender\n6-Cadastrar Fabricante\n7-Sair:\n')
             print(80 * '\033[34m=', '\033[m')
             if entrada == '1':
-                self.ai.salvar_produtos()
+               print('oi')
             elif entrada == '2':
                 self.ai.listar_produtos()
             elif entrada == '3':
@@ -23,6 +26,7 @@ class Menu:
             elif entrada == '5':
                 venda.vender()
             elif entrada == '6':
-                self.fabrica.cadastrar()
+                nome = input('digite seu nome: ')
+                self.data.cadastro_fabricante(nome=nome)
             elif entrada == '7':
                 break

@@ -1,10 +1,8 @@
 from Classe_Venda import *
 
+
 class Salvar_Fabricante():
-   def __init__(self, cod, nome):
-
-        self.cod = cod
-
+   def __init__(self, nome):
         self.nome = nome
 
 
