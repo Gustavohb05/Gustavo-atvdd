@@ -7,7 +7,7 @@ from Classe_Fabricante import *
 class Estoque:
     def __init__(self):
         self.puxar = []
-        self.puxar.append(Produto(1, 'Lapis', 'aa', 0))
+        self.puxar.append(Produto(1, 'Lapis', 'aa'))
         self.entrada = Fabricante()
 
 

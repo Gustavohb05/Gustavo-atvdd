@@ -1,6 +1,5 @@
 class Produto:
-    def __init__(self, cod, desc, fab, quant=0):
-        self.cod = cod
-        self.desc = desc
-        self.fab = fab
+    def __init__(self, nome, fabri, quant):
+        self.nome = nome
+        self.fabri = fabri
         self.quant = quant
