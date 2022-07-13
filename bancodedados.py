@@ -1,7 +1,7 @@
 import mysql.connector as mys
 from Classe_Fabricante import *
 from Estoquetrabalho import *
-
+from tkinter.messagebox import *
 
 class Data:
     def __init__(self):
@@ -9,20 +9,24 @@ class Data:
         self.cursor = self.database.cursor()
 
     def cadastro_produto(self, nome, quant, fabri):
-        self.cursor.execute('select cod from fabricante')
-        veri = self.cursor.fetchall()
+        if askyesno('Cadastro', ' deseja cadastrar?'):
+            self.cursor.execute('select cod from fabricante')
+            veri = self.cursor.fetchall()
         for cod in veri:
             if int(fabri) == cod[0]:
                 produto = Produto(nome, fabri, quant)
-                print('Cadastrado Com Sucesso')
+
                 self.cursor.execute(f'insert into Produtos (nome, quant, cod_fabricante) values ("{produto.nome}", {produto.quant}, {produto.fabri})')
                 self.database.commit()
+                showinfo('cadastro', 'Cadastrado')
 
     def cadastro_fabricante(self, nome):
-        fabricante = Salvar_Fabricante(nome)
-        print('Cadastrado Com Sucesso')
-        self.cursor.execute(f'insert into fabricante (nome) values ("{fabricante.nome}")')
-        self.database.commit()
+        if askyesno('cadastro', 'Cadastrar fabricante'):
+            fabricante = Salvar_Fabricante(nome)
+
+            self.cursor.execute(f'insert into fabricante (nome) values ("{fabricante.nome}")')
+            self.database.commit()
+            showinfo('Cadastro', 'Cadastrado')
 
     def listar(self):
         self.cursor.execute('select Produtos.cod, Produtos.nome,Produtos.quant, Fabricante.nome from Produtos, Fabricante where Fabricante.cod = Produtos.cod_fabricante')
