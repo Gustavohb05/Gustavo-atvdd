@@ -28,15 +28,12 @@ class Data:
             self.database.commit()
             showinfo('Cadastro', 'Cadastrado')
 
-    def listar(self):
+    def listar(self, tabela):
         self.cursor.execute('select Produtos.cod, Produtos.nome,Produtos.quant, Fabricante.nome from Produtos, Fabricante where Fabricante.cod = Produtos.cod_fabricante')
         Produtos = self.cursor.fetchall()
         for prod in Produtos:
-            print(70 * '\033[34m=', '\033[m')
-            print(f'codigo: {prod[0]}'
-              f'\nproduto: {prod[1]}'
-              f'\nquantidade: {prod[2]}'
-              f'\nfabricante: {prod[3]}')
+            valores = [prod[0], prod[1], prod[2], prod[3]]
+            tabela.insert('', 'end', values=valores, tags='1')
 
     def altera_produtos(self, cod, mudar, valor):
         try:

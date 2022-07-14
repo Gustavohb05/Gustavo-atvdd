@@ -1,7 +1,7 @@
 import posiciona
 from tkinter import *
 from bancodedados import *
-
+from tkinter import ttk
 
 
 
@@ -48,7 +48,7 @@ bt4 = Button(f2, font='ARIAL 25', text='Produtos', bg='#ff19cf', fg='white', bd=
 bt4.place(width=329, height=125, x=729, y=491)
 
 bt5 = Button(f2, font='ARIAL 25', text='Listar', bg='#ff19cf', fg='white', bd=0,
-             command=lambda: [f1.forget(), f2.forget(), f3.forget(), f4.forget(), f5.pack()],
+             command=lambda: [f1.forget(), f2.forget(), f3.forget(), f4.forget(), f5.pack(), data.listar(tabela)],
              activebackground='#ff19cf')
 bt5.place(width=328, height=123, x=729, y=773)
 
@@ -95,24 +95,32 @@ bt8.place(width=233, height=73, x=1613, y=878)
 
 f5 = Frame(janela)
 
-bg5 = PhotoImage(file='5.png')
+bg5 = PhotoImage(file='PYDRUTOS.png')
 
 label5 = Label(f5, image=bg5)
 
-l6 = Label(f5, bg='white', activebackground='white', bd=0)
-l6.place(width=544, height=52, x=666, y=212)
-
-l7 = Label(f5, bg='white', activebackground='white', bd=0)
-l7.place(width=738, height=54, x=682, y=342)
-
-l8 = Label(f5, bg='white', activebackground='white', bd=0)
-l8.place(width=435, height=51, x=764, y=487)
-
-l9 = Label(f5, bg='white', activebackground='white', bd=0)
-l9.place(width=706, height=53, x=716, y=628)
 
 bt9 = Button(f5, text='Listar', font='ARIAL 25', bg='#ff19cf', activebackground='black', bd=0)
-bt9.place(width=415, height=77, x=720, y=844)
+
+bt10 = Button(f5, image=b, bg='black', activebackground='black', bd=0, command=lambda: [f1.forget(), f2.pack(), f3.forget(), f4.forget(), f5.forget()])
+bt10.place(width=68, height=64, x=38, y=25)
+
+tabela = ttk.Treeview(f5, columns=["cod", "nome", "quant", "fabri"], selectmode='browse',
+show='headings')
+tabela.place(width=1379, height=837, x=259, y=175)
+
+rolar = ttk.Scrollbar(f5, orient='vertical', command=tabela.yview())
+tabela.config(xscrollcommand=rolar.set)
+tabela.column("cod", width=10)
+tabela.column("nome", width=150)
+tabela.column("quant", width=30)
+tabela.column("fabri", width=150)
+tabela.heading("cod", text='cod')
+tabela.heading("nome", text='Nome do produto')
+tabela.heading("quant", text='Quantidade')
+tabela.heading("fabri", text='Fabricante')
+
+
 
 f1.pack()
 f2.pack()
